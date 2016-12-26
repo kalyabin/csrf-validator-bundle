@@ -18,6 +18,12 @@ interface ReaderManagerInterface
     public function supports(\ReflectionMethod $action);
 
     /**
+     * @param \ReflectionClass $controller
+     * @return bool|Annotation
+     */
+    public function supportsClass(\ReflectionClass $controller);
+
+    /**
      * @param Annotation $annotation
      * @return bool
      */

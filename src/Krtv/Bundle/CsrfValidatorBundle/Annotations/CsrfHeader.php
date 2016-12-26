@@ -9,7 +9,7 @@ use Doctrine\Common\Annotations\Annotation;
  * Csrf reader from HTTP Headers
  *
  * @Annotation
- * @Target("METHOD")
+ * @Target({"METHOD", "CLASS"})
  *
  * @package Krtv\Bundle\CsrfValidatorBundle\Annotations
  */

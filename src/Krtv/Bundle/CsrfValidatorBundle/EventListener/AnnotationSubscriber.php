@@ -65,10 +65,14 @@ class AnnotationSubscriber implements EventSubscriberInterface
 
         $method = new \ReflectionMethod($controller, $action);
 
-        if ($annotation = $this->readerManager->supports($method)) {
-            if (!$this->readerManager->validate($annotation)) {
-                throw new BadRequestHttpException('Token is invalid');
-            }
+        $annotation = $this->readerManager->supports($method);
+        if (!$annotation) {
+            $class = new \ReflectionObject($controller);
+            $annotation = $this->readerManager->supportsClass($class);
+        }
+
+        if ($annotation && !$this->readerManager->validate($annotation)) {
+            throw new BadRequestHttpException('Token is invalid');
         }
     }
 }

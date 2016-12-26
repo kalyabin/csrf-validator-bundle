@@ -9,7 +9,7 @@ use Doctrine\Common\Annotations\Annotation;
  * Class Csrf
  * @package Krtv\Bundle\CsrfValidatorBundle\Annotations
  * @Annotation
- * @Target("METHOD")
+ * @Target({"METHOD", "CLASS"})
  */
 final class Csrf extends Annotation
 {

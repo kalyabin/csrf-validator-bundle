@@ -64,6 +64,20 @@ abstract class AbstractReaderManager implements ReaderManagerInterface
     }
 
     /**
+     * @param \ReflectionClass $controller
+     * @return bool|Annotation
+     */
+    public function supportsClass(\ReflectionClass $controller)
+    {
+        $annotation = $this->reader->getClassAnnotation($controller, $this->annotationClass);
+        if ($annotation !== null) {
+            return $annotation;
+        }
+
+        return false;
+    }
+
+    /**
      * Validates CSRF token from controller annotation.
      *
      * @param Annotation $annotation
